@@ -49,10 +49,10 @@ class OrderHandler
 
     /**
      * @param Request $request
-     * @return bool
+     * @return float
      * @throws Exception
      */
-    public function orderMakePurchase(Request $request): bool
+    public function orderMakePurchase(Request $request): float
     {
         $parseData = $this->orderParserRequest->parseOrderMakePurchaseRequest($request);
 

@@ -16,7 +16,7 @@ interface OrderModuleInterface
 
     /**
      * @param Request $request
-     * @return array
+     * @return float
      */
-    public function orderMakePurchaseAction(Request $request): array;
+    public function orderMakePurchaseAction(Request $request): float;
 }

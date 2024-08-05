@@ -18,8 +18,8 @@ class OrderController extends AbstractController
 
     private OrderModuleInterface $orderModule;
 
-    public function __construct(OrderModuleInterface $orderModule,
-                                PriceCalculatorService $priceCalculator,
+    public function __construct(OrderModuleInterface    $orderModule,
+                                PriceCalculatorService  $priceCalculator,
                                 PaymentProcessorService $paymentProcessor)
     {
         $this->priceCalculator = $priceCalculator;
@@ -37,14 +37,14 @@ class OrderController extends AbstractController
     {
         try {
             $response = $this->orderModule->orderPriceCalculationAction($request);
-            return new JsonResponse(['price' => $response]);
+            return new JsonResponse(['price' => $response], 200);
         } catch (Exception $e) {
             return new JsonResponse(['error' => $e->getMessage()], 400);
         }
     }
 
     /**
-     * Method for calculating price
+     * Method for making a purchase
      * @Rest\Post("/purchase", name="purchase")
      * @param Request $request
      * @return JsonResponse
@@ -52,8 +52,8 @@ class OrderController extends AbstractController
     public function orderMakePurchase(Request $request): JsonResponse
     {
         try {
-            $response['response'] = $this->orderModule->orderMakePurchaseAction($request);
-            return new JsonResponse($response);
+            $response = $this->orderModule->orderMakePurchaseAction($request);
+            return new JsonResponse(['success' => $response], 200);
         } catch (Exception $e) {
             return new JsonResponse(['error' => $e->getMessage()], 400);
         }
