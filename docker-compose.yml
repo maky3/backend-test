@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    sio_test:
+        user: app
+        build:
+            context: .
+            args:
+                USER_ID: ${USER_ID:-1000}
+        ports:
+            - "8337:8337"
+        volumes:
+            - .:/app:rw
+        environment:
+            - APP_ENV=dev
+
+###> doctrine/doctrine-bundle ###
+    database:
+      image: mysql:8.0
+      environment:
+        MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123} # знаю что плохая практика просто так быстрее и работает, при всем уважении
+        MYSQL_USER: ${MYSQL_USER:-root}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD:-123}
+      volumes:
+        - database_data:/var/lib/mysql:rw
+      ports:
+        - "3306:3306"
+volumes:
+    database_data:
+###> doctrine/doctrine-bundle ###
+

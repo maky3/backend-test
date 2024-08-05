@@ -1,0 +1,16 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+calculate_price:
+    path: /calculate-price
+    methods: [POST]
+    controller: App\Controller\Order\OrderController::orderPriceCalculation
+
+purchase:
+    path: /purchase
+    methods: [POST]
+    controller: App\Controller\Order\OrderController::orderPriceCalculation
+
