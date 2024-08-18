@@ -18,10 +18,10 @@ services:
     database:
       image: mysql:8.0
       environment:
-        MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-123} # знаю что плохая практика просто так быстрее и работает, при всем уважении
-        MYSQL_USER: ${MYSQL_USER:-root}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD:-123}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       volumes:
         - database_data:/var/lib/mysql:rw
       ports:
